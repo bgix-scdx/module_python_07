@@ -18,7 +18,21 @@ class Card(ABC):
 
     @abstractmethod
     def play(self, game_stats: dict) -> dict:
-        ...
+        cost = self.get_card_info().get("cost")
+        color("")
+        if self.is_playable(game_stats.get("available_mana")):
+            color(f" 🔥 {self.name} was summmon on the battle field !"
+                  f"for {cost} mana",
+                  (255, 0, 0))
+            color(f" 📜 Revealing stats: {self.get_card_info()}",
+                  (0, 255, 255))
+            self.played = True
+            return game_stats.get("available_mana") - cost
+        else:
+            color(f" 🫗  You can not summon '{self.name}' yet. "
+                  f"({game_stats.get("available_mana")} / {cost})",
+                  (0, 0, 255))
+            return game_stats.get("available_mana")
 
     def get_card_info(self) -> dict:
         return {"name": self.name,

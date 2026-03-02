@@ -4,6 +4,16 @@ from ex1.SpellCard import SpellCard
 from ex1.Deck import Deck
 
 
+def damage(target, damage):
+    color(f" ⛈️  Damaging {damage} health of {target.name} !",
+          (255, 255, 0))
+    try:
+        target.health -= damage
+    except ValueError:
+        color(" 🌧️  But it failed !",
+              (255, 255, 0))
+
+
 def strike(target: CreatureCard, damage) -> None:
     color(f" ⛈️  Striking down {damage} health of {target.name} !",
           (255, 255, 0))
@@ -35,7 +45,7 @@ if __name__ == "__main__":
     mana = spell.play({"available_mana": mana})
     mana = elexir.play({"available_mana": mana})
     mana = elexir.play({"available_mana": mana})
-    elexir.activate_ablity(10)
+    elexir.activate_ability(10)
     spell.activate_ability(goblin, 5)
     spell.activate_ability(goblin, 5)
 
@@ -50,6 +60,6 @@ if __name__ == "__main__":
     deck.remove_card("Thunderous Strike")
     deck.remove_card("Bakus Amogus")
     print()
-    elexir.activate_ablity(10)
+    elexir.activate_ability(10)
     deck.shuffle()
     deck.get_deck_stats()

@@ -26,7 +26,7 @@ class ArtifactCard(Card):
                   (0, 0, 255))
             return game_stats.get("available_mana")
 
-    def activate_ablity(self, args):
+    def activate_ability(self, args):
         color(f" 🔮 {self.name}'s effect biggins !",
               (255, 0, 255))
         if self.active is None or self.duration < self.lifespan:
