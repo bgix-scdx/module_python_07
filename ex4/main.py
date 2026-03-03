@@ -10,3 +10,5 @@ if __name__ == "__main__":
     TournamentPlatform.register_card(card1)
     TournamentPlatform.register_card(card2)
     TournamentPlatform.create_match(card1.id, card2.id)
+    TournamentPlatform.get_leaderboard()
+    TournamentPlatform.generate_tournament_report()

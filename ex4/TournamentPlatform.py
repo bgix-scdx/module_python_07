@@ -2,6 +2,7 @@ from ex4.TournamentCard import TournamentCard
 from random import randint
 from ex0.main import color
 saves = []
+played = 0
 
 
 class TournamentPlatform:
@@ -30,12 +31,29 @@ class TournamentPlatform:
         color(f"Loser: {loser.id}", (255, 155, 0))
         winer.update_wins(1)
         loser.update_loses(1)
+        global played
+        played += 1
         return winer
 
     def get_leaderboard() -> None:
-        for i in saves:
-            data = i[0]
-            print(data.name)
+        mini = None
+        selected = None
+        clonelist = saves.copy()
+        color("\nDisplaying Leaderboard...", (255, 205, 155), bold=True)
+        while len(clonelist) > 0:
+            for i in clonelist:
+                i = i[0]
+                if (mini is None or i.elo > mini):
+                    selected = i
+                    mini = i.elo
+            color(f"{selected.name}'s score: {selected.elo}", (255, 205, 0))
+            clonelist.remove([selected])
+            selected = None
+            mini = None
 
     def generate_tournament_report() -> None:
-        pass
+        color(f"\nTotal Card: {len(saves)}", (255, 0, 205))
+        color(f"Total played: {played}", (255, 0, 205))
+        rating = sum(i[0].elo for i in saves) / len(saves)
+        color(f"Total Rating: {rating}", (255, 0, 205))
+        color("Status: Active", (255, 0, 205))
