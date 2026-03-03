@@ -4,7 +4,7 @@ from ex1.SpellCard import SpellCard
 from ex1.Deck import Deck
 
 
-def damage(target, damage):
+def damage(target, damage) -> None:
     color(f" ⛈️  Damaging {damage} health of {target.name} !",
           (255, 255, 0))
     try:

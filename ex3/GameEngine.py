@@ -1,13 +1,16 @@
 from ex0.main import color
+from ex3.CardFactory import CardFactory
+from ex3.GameStrategy import GameStrategy
 
 
 class GameEngine:
-    def __init__(self, rounds) -> None:
+    def __init__(self, rounds: int) -> None:
         color("Starting Game Engine...", (255, 205, 155), bold=True)
         self.turns = rounds
         self.passedturns = 0
 
-    def configure_engine(self, factory, strategy) -> None:
+    def configure_engine(self, factory: CardFactory,
+                         strategy: GameStrategy) -> None:
         color("Turn is starting:",
               (255, 0, 255))
         self.hand = factory.create_themed_deck(12)

@@ -1,7 +1,6 @@
 from ex4.TournamentPlatform import TournamentPlatform
 from ex4.TournamentCard import TournamentCard
-from ex0.Card import Card
-from ex2.Combatable import Combatable
+from ex0.main import color
 
 
 if __name__ == "__main__":
@@ -12,3 +11,4 @@ if __name__ == "__main__":
     TournamentPlatform.create_match(card1.id, card2.id)
     TournamentPlatform.get_leaderboard()
     TournamentPlatform.generate_tournament_report()
+    color("\nEnd of Tournament", (255, 0, 255), bold=True)
